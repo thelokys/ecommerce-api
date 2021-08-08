@@ -1,5 +1,8 @@
 class Product < ApplicationRecord
   belongs_to :productable, polymorphic: true
+  
+  has_many :product_categories, dependent: :destroy
+  has_many :categories, through: :product_categories
 
   validates :name, 
     presence: true, 
@@ -11,5 +14,4 @@ class Product < ApplicationRecord
   validates :price,
     presence: true, 
     numericality: { greater_than: 0 }
-
 end
