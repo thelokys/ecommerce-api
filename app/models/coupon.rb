@@ -11,7 +11,9 @@ class Coupon < ApplicationRecord
     presence: true, 
     numericality: { greater_than: 0 }
 
-  validates :due_date, presence: true
+  validates :due_date, 
+    presence: true,
+    future_date: true
 
 
 end

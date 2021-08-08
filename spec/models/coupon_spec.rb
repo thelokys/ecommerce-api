@@ -11,4 +11,21 @@ RSpec.describe Coupon, type: :model do
   it { is_expected.to validate_presence_of(:due_date) }
   it { is_expected.to validate_numericality_of(:discount_value).is_greater_than(0) }
   
+  it "cannot have past date due_date" do
+    subject.due_date = 1.day.ago
+    subject.valid?
+    expect(subject.errors.keys).to include(:due_date)
+  end
+
+  it "cannot with current date due_date" do
+    subject.due_date = Time.zone.now
+    subject.valid?
+    expect(subject.errors.keys).to include(:due_date)
+  end
+
+  it "cannot with future date due_date" do
+    subject.due_date = Time.zone.now + 1.hour
+    subject.valid?
+    expect(subject.errors.keys).to_not include(:due_date)
+  end
 end
