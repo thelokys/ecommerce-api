@@ -6,12 +6,14 @@ module Admin::V1
       @categories = Category.all
     end
 
+    # POST: /admin/v1/categories
     def create
       @category = Category.new
       @category.attributes = category_params
       save_category!
     end
 
+    private
     def category_params
       return {} unless params.has_key?(:category)
       params.require(:category).permit(:name)
