@@ -3,7 +3,7 @@ module Admin::V1
     # include Authenticable
 
     def render_error(message: nil, fields: nil, status: :unprocessable_entity)
-       errors = {}
+      errors = {}
       errors['fields'] = fields if fields.present?
       errors['message'] = message if message.present?
       render json: { errors: errors }, status: status
