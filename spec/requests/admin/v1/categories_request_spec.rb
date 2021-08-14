@@ -105,7 +105,7 @@ RSpec.describe "Admin::V1::Categories", type: :request do
         expect(category.name).to eq(old_name)
       end
 
-      it "retunrs error messages" do
+      it "returns error messages" do
         patch url, headers: auth_header(user),params: category_invalid_params
         expect(body_json["errors"]["fields"]).to have_key("name")
       end
