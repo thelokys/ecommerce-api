@@ -16,6 +16,7 @@ if ENV['RAILS_ENV'] == 'test'
 end
 
 Dir[Rails.root.join('spec', 'support', '**', '*.rb')].each { |f| require f }
+Dir[Rails.root.join('spec', 'shared_examples', '**', '*.rb')].each { |f| require f }
 
 begin
   ActiveRecord::Migration.maintain_test_schema!
