@@ -15,11 +15,13 @@ module Admin::V1
       save_category!
     end
 
+    # PATCH: /admin/v1/categories/:id
     def update
       @category.attributes = category_params
       save_category!
     end
 
+    # DELETE: /admin/v1/categories/:id
     def destroy
       @category.destroy
       rescue
