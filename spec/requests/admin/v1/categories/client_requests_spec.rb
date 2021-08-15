@@ -37,7 +37,4 @@ RSpec.describe "Admin::V1::Categories as :client", type: :request do
 
     include_examples "forbidden access"
   end
-  
-  
-
 end

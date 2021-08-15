@@ -115,7 +115,7 @@ RSpec.describe "Admin::V1::Categories as :admin", type: :request do
         expect(response).to have_http_status(:unprocessable_entity)
       end
     end
-    
+
     context "DELETE /categories/:id" do
       let!(:category) { create(:category) }
       let(:url) { "/admin/v1/categories/#{category.id}" }
