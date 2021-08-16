@@ -38,9 +38,9 @@ module Admin::V1
       params.require(:category).permit(:name)
     end
 
-    def save_category!(status: :created)
+    def save_category!
       @category.save!
-      render :show, status: status
+      render :show
       rescue
         render_error(fields: @category.errors.messages)
     end

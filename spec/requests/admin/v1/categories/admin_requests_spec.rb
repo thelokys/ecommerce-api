@@ -36,9 +36,9 @@ RSpec.describe "Admin::V1::Categories as :admin", type: :request do
         expect(body_json['category']).to eq expected_category
       end
 
-      it "should return status 201 created" do
+      it "should return status 200 success" do
         post url, headers: auth_header(user), params: category_params
-        expect(response).to have_http_status(:created)
+        expect(response).to have_http_status(:ok)
       end
     end
 
@@ -88,7 +88,7 @@ RSpec.describe "Admin::V1::Categories as :admin", type: :request do
 
       it "returns success category" do
         patch url, headers: auth_header(user), params: category_params
-        expect(response).to have_http_status(:created)
+        expect(response).to have_http_status(:ok)
       end
     end
 
@@ -131,7 +131,7 @@ RSpec.describe "Admin::V1::Categories as :admin", type: :request do
         expect(response).to have_http_status(:no_content)
       end
 
-      it "does not retunr any body content" do
+      it "does not return any body content" do
         delete url, headers: auth_header(user)
         expect(body_json).to_not be_present
       end
